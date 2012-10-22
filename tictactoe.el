@@ -234,6 +234,7 @@
     (setq brd (createBoard))
     (setq first (possiMove brd ?x))
     (setq final (makeNextMove first ?o))
-    (dolist (
     (print second)
     (printPath (car (makeNextMove first ?o)))
+    )
+  )
