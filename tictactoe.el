@@ -172,8 +172,12 @@
       ((result))
     (if (not (eq nil (setq result (gethash brd ht))))
 	result
-      (setq result (winfilter (remq nil (mapcar '(lambda(x) (makeMove brd x toPlay)) brd))))
-      (puthash brd result ht)
+      (let 
+	  ()
+	(setq result (winfilter (remq nil (mapcar '(lambda(x) (makeMove brd x toPlay)) brd))))
+	(puthash brd result ht)
+	result
+	)
       )
     )
   )
@@ -460,7 +464,7 @@
        (final)
        )
     (setq brd (createBoard))
-    (setq first (possiMove brd ?x))
+    (setq first (possiMove brd ?x (make-hash-table :test 'pathhashtable)))
     (setq final (makeNextMove first ?o))
   )
 )
